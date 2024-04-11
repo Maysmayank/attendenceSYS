@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Basic CSS styles for layout and appearance */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Teacher Dashboard</h2>
+        
+        <!-- Cards for displaying different sections of the dashboard -->
+        <div class="card">
+            <h3>Section 1</h3>
+            <p>This is section 1 of the dashboard.</p>
+        </div>
+
+        <div class="card">
+            <h3>Section 2</h3>
+            <p>This is section 2 of the dashboard.</p>
+        </div>
+        
+        <h1>QR Code Generator</h1>
+        <form action="/generatedQRCODE" method="get">
+        <button id="generatebtn">Generate QR code</button>
+        </form>
+
+    </div>
+</body>
+</html>

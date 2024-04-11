@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Another Page</title>
+</head>
+<body>
+    <h1>Other Page: QR CODE TO BE GENERATED ON USER/STUDENT SIDE</h1>
+    <h2 style="display: inline;">The QR Code Ends in: </h2>
+    <div id="timer"></div>
+    <canvas id="qrCodeCanvas" width="300" height="300"></canvas> <!-- Increase width and height here -->
+    <img id="qrCodeImage" style="display: none;" src="">
+    <script>
+        // Retrieve qrcodeurl from local storage
+        let qrcodeurl = localStorage.getItem('qrcodeurl');
+
+        // Load the image from the qrcodeurl
+        let image = new Image();
+        image.src = qrcodeurl;
+
+        image.onload = function() {
+            let canvas = document.getElementById('qrCodeCanvas');
+            let context = canvas.getContext('2d');
+
+            canvas.width = image.width;
+            canvas.height = image.height;
+
+            context.drawImage(image, 0, 0, canvas.width, canvas.height); // Scale the image to fit canvas
+
+            // Function to get the image type
+            function getImageType(dataURL) {
+                let mimeType = dataURL.split(',')[0].split(':')[1].split(';')[0];
+                return mimeType.split('/')[1];
+            }
+
+            let imageType = getImageType(canvas.toDataURL());
+            console.log("Image Type:", imageType);
+
+            let imageDataURL;
+
+            if (imageType === 'png') {
+                // If it's already PNG, use the original data URL
+                imageDataURL = canvas.toDataURL('image/png');
+            } else {
+                // Convert to PNG
+                imageDataURL = canvas.toDataURL('image/png');
+            }
+
+            // Set the src attribute of the img tag with the converted image data URL
+            document.getElementById('qrCodeImage').src = imageDataURL;
+
+            // Start the timer
+            startTimer(20, document.getElementById('timer'));
+        };
+
+        function startTimer(duration, display) {
+            let timer = duration;
+            let set = setInterval(() => {
+                display.textContent = timer;
+                if (--timer < 0) {
+                    clearInterval(set);
+                    let qrCodeCanvas = document.getElementById('qrCodeCanvas');
+                    qrCodeCanvas.style.display = 'none';
+                }
+                console.log(timer);
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>

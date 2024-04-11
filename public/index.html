@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+<body>
+    <h2>Student Registration Form</h2>
+    <form action="/student/student-form-details" method="POST">
+        <label for="enrollment_number">Enrollment Number:</label><br>
+        <input type="text" id="enrollment_number" name="enrollment_number" required><br>
+        
+        <label for="fullname">Full Name:</label><br>
+        <input type="text" id="fullname" name="fullname" required><br>
+        
+        <label for="course">Course:</label><br>
+        <input type="text" id="course" name="course" required><br>
+        
+        <label for="year">Year:</label><br>
+        <input type="text" id="year" name="year"><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

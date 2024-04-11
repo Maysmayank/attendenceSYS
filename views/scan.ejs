@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRcode</title>
+</head>
+<body>
+    <img id="qrCodeImage" src=<%=qr_code %> alt="QR_IMAGE">
+    
+    <script>
+
+        let setgo=setInterval(()=>{
+            localStorage.setItem('qrcodeurl', "<%=qr_code %>");
+                // Redirect to another page
+                window.open("/otherPage", "_blank");
+                clearInterval(setgo);
+
+        },2000)
+       // window.location.href="?another/page" to redirect to other page
+       function starttimer(duration,display){
+        let timer=duration;
+        let set=setInterval(()=>{
+            display.textContent=timer;
+            if(--timer<0){
+                clearInterval(set);
+                let qrCodeImage = document.getElementById('qrCodeImage');
+                qrCodeImage.style.display = 'none';
+            }
+            console.log(timer);
+        },1000);
+       } 
+
+       window.onload=function(){
+        display=document.getElementById('timer');
+        starttimer(20,display);
+       }
+    </script>
+</body>
+</html>

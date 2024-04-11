@@ -1,0 +1,25 @@
+<!-- create_student.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Student</title>
+</head>
+<body>
+    <h1> Student</h1>
+    <form action="/student/surveyform" method="POST">
+        <label for="studentname">student Name:</label>
+        <input type="text" id="studentname" name="studentname" required><br>
+        
+        <label for="Enrollmentnumber">Enrollment Number:</label>
+        <input type="text" id="Enrollmentnumber" name="enrollment_number" required><br>
+        
+        <label for="Present">Present:</label>
+        <input type="text" id="Present" name="present" required><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
